@@ -1,0 +1,40 @@
+heat_template_version: rocky
+
+description: example for 2instance stack
+
+resources:
+ instance1:
+  type: OS::Nova::Server
+  properties:
+   image: cirros
+   flavor: m1.tiny
+   networks:
+   - network: public
+
+ instance2:
+  type: OS::Nova::Server
+  properties:
+   image: cirros
+   flavor: m1.tiny
+   networks: 
+   - network: public
+
+ volume1_instance1:
+  type: OS::Cinder::Volume
+  properties:
+   size: 1
+
+ volume2_instance1:
+  type: OS::Cinder::Volume
+  properties:
+   size: 1
+
+ volume1_instance2:
+  type: OS::Cinder::Volume
+  properties:
+   size: 1
+
+ volume2_instance2:
+  type: OS::Cinder::Volume
+  properties:
+   size: 1
